@@ -6,8 +6,6 @@
     </div>
     <div class="card mt-2">
       <div class="card-body">
-        <!-- Todo input form -->
-
         <div class="row">
           <div class="col-md-6">
             <form @submit.prevent="addTodo">
@@ -23,7 +21,7 @@
               </div>
             </form>
           </div>
-          <!-- Search input -->
+
           <div class="col-md-6">
             <div class="input-group mb-3">
               <input
@@ -36,7 +34,7 @@
           </div>
         </div>
 
-        <table class="table table-striped table-bordered">
+        <transition-group name="fade" tag="table" class="table table-striped table-bordered">
           <thead>
             <tr>
               <th scope="col-md-4">No</th>
@@ -95,7 +93,7 @@
               </td>
             </tr>
           </tbody>
-        </table>
+        </transition-group>
       </div>
     </div>
   </div>
@@ -159,9 +157,8 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-
 .container {
-  padding: 5%;
+  padding: 3%;
   max-width: 100%;
 }
 
@@ -190,4 +187,13 @@ input[type="submit"] {
   border-radius: 0;
 }
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>
